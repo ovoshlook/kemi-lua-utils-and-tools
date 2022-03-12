@@ -14,6 +14,18 @@ local get = function(headerName)
 
 end
 
+local function parse(value) 
+    local uname,host,port,urlParams,headerParams=string.match(value,"<sip:(.*)@([%a%d%.]+):*(%d*)([;?[%a%d-=:]*]*)>?([;?[%a%d-=:]*]*)")
+    return {
+        uname = uname,
+        host = host,
+        port = port,
+        urlParams = urlParams,
+        headerParams = headerParams
+    }
+end
+
 return {
-    get = get
+    get = get,
+    parse = parse
 }

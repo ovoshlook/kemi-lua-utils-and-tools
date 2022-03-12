@@ -1,3 +1,6 @@
+-- this is just a template for the main.lua file which simplifies understanding of how all these can be used
+-- However this is not the only one approach to use.
+
 -- Prepare for execution lua modules from the subfolders of the folder this scritp is in.s
 local myPath = debug.getinfo(1).source:match("@?(.*/)")
 if not string.match(package.path, myPath) then
@@ -15,9 +18,9 @@ function ksr_request_route()
     
     if not result then
         if err then
-            KSR.sl.sl_send_reply(err.suggestedCode, err.suggestedReason)
+            KSR.sl.sl_send_reply(err.code, err.reason)
         end
-        return stopHandling()
+        tools.script.finish()
     end
 
     if KSR.is_OPTIONS() and KSR.is_myself_ruri() and KSR.corex.has_ruri_user() < 0 then
@@ -97,6 +100,13 @@ function ksr_xhttp_wrapper()
         roles.http_server.listen()
     end
 
+end
+
+function ksr_http_client_callback()
+    
+    KSR.info("http client callback event arrived\n")
+    roles.http_client.reply()
+    
 end
 
 testSuite.run()

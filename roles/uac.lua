@@ -53,7 +53,7 @@ local function sendRequest(typ,dtls,bt,body)
     end
     
     local packet = "BYE "..ruri.." SIP/2.0\r\n".."Via: SIP/2.0/UDP "..config.myAddr..";branch=z9hG4bK"..callId.."\r\nVia: SIP/2.0/UDP 127.0.0.1;branch=z9hG4bK-fake\r\n"..faultRouteHeader.."From: "..from.."\r\n".."To: "..to.."\r\n".."CSeq: "..cSeq.." BYE\r\n".."Call-ID: " ..callId.. "\r\nContent-length: 0\r\n\r\n"
-    --KSR.corex.send_data(destination,packet)
+    KSR.corex.send_data(ruri,packet)
 
 end
 

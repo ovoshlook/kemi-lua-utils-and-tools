@@ -18,7 +18,7 @@ end
 
 --callback param has to be passed as { module="module.path", method="name"}
 local function request(method,url,data,callback)
-    --if KSR.tm.t_check_trans() < 0 or KSR.tmx.t_is_branch_route() < 0 then KSR.tm.t_newtran() end
+    if KSR.tm.t_check_trans() < 0 or KSR.tmx.t_is_branch_route() < 0 then KSR.tm.t_newtran() end
     KSR.tm.t_newtran()
     KSR.pv.sets("$http_req(hdr)", "Content-Type: application/json")
     KSR.pv.sets("$http_req(body)",data)
@@ -32,11 +32,6 @@ local function request(method,url,data,callback)
     end
     return true
 
-end
-
-
-local function addReason(code)
-    local reason = codesMap[code]
 end
 
 local function reply()

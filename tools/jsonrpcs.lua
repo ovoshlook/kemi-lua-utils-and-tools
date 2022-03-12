@@ -1,4 +1,4 @@
-local json = require "cjson.safe"
+local json = require "tools.json"
 
 local requestBody = function(prefix, command, params)
     return json.encode({

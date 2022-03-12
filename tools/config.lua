@@ -1,6 +1,6 @@
-local json = require "cjson.safe"
+local json = require "tools.json"
 
-local dataFieldsAllowed = { "urls", "redis","interfaces","codecsAllowed" }
+local dataFieldsAllowed = { "redis" }
 
 local config
 local hash = os.time(os.date("!*t"))
@@ -27,14 +27,6 @@ local function verify(data)
     end
 
     return validData
-end
-
-local function dig(root,goal)
-    
-    if not root[goal] then
-        return false
-    end
-    return root[goal]
 end
 
 local function put(data)

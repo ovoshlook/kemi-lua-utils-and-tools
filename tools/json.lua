@@ -1,4 +1,4 @@
-local json = require "cjson.safe"
+local json = require "tools.json"
 
 local function encode(data) 
     local encoded = json.encode(data)

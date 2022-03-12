@@ -1,14 +1,4 @@
 
--- local function parseHeader(value) 
---     local uname,host,port,urlParams,headerParams=string.match(value,"<sip:(.*)@([%a%d%.]+):*(%d*)([;?[%a%d-=:]*]*)>?([;?[%a%d-=:]*]*)")
---     return {
---         uname = uname,
---         host = host,
---         urlParams = urlParams,
---         headerParams = headerParams
---     }
--- end
-
 local IPAddrTemplate = "(%d+.%d+.%d+.%d)"
 local FalseIPAddrs = {
     "127.0.0.1",
